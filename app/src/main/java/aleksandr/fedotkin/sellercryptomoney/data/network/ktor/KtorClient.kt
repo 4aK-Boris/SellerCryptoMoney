@@ -3,7 +3,6 @@ package aleksandr.fedotkin.sellercryptomoney.data.network.ktor
 import aleksandr.fedotkin.sellercryptomoney.domain.common.BadRequest
 import aleksandr.fedotkin.sellercryptomoney.domain.common.InternalServerError
 import aleksandr.fedotkin.sellercryptomoney.domain.common.NoInternet
-import aleksandr.fedotkin.sellercryptomoney.domain.common.Unauthorized
 import aleksandr.fedotkin.sellercryptomoney.domain.common.UnknownNetworkException
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -55,7 +54,6 @@ class KtorClient(private val client: HttpClient) {
     fun handleError(response: HttpResponse) {
         when (response.status) {
             HttpStatusCode.BadRequest -> throw BadRequest()
-            HttpStatusCode.Unauthorized -> throw Unauthorized()
             HttpStatusCode.InternalServerError -> throw InternalServerError()
             else -> throw UnknownNetworkException()
         }
