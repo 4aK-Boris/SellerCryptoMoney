@@ -26,19 +26,23 @@ class KtorClient(private val client: HttpClient) {
         response.body()
     } catch (ex: UnresolvedAddressException) {
         throw NoInternet()
+    } catch (e: Exception) {
+        throw NoInternet()
     }
 
-    suspend fun postRequest(url: String, body: Any): HttpResponse =
-        client.post(urlString = url) {
+    suspend fun postRequest(url: String, body: Any): HttpResponse {
+        return client.post(urlString = url) {
             setBody(body)
         }
+    }
 
-    suspend fun getRequest(url: String, parameters: Map<String, Any>): HttpResponse =
-        client.get(urlString = url) {
+    suspend fun getRequest(url: String, parameters: Map<String, Any>): HttpResponse {
+        return client.get(urlString = url) {
             parameters.forEach { (key, value) ->
                 parameter(key = key, value = value)
             }
         }
+    }
 
     suspend inline fun <reified T : Any> post(url: String, body: Any): T = call {
         postRequest(url = url, body = body)

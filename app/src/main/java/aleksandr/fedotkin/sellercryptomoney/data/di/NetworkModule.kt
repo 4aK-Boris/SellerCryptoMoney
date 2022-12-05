@@ -6,6 +6,7 @@ import aleksandr.fedotkin.sellercryptomoney.data.network.ktor.KtorClient
 import aleksandr.fedotkin.sellercryptomoney.data.network.ktor.plugins.configureDefaultRequest
 import aleksandr.fedotkin.sellercryptomoney.data.network.ktor.plugins.configureJson
 import aleksandr.fedotkin.sellercryptomoney.data.network.ktor.plugins.configureLogging
+import aleksandr.fedotkin.sellercryptomoney.data.network.ktor.plugins.configureTimeout
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
 import org.koin.core.module.dsl.bind
@@ -18,6 +19,7 @@ val networkModule = module {
             configureJson()
             configureLogging()
             configureDefaultRequest()
+            configureTimeout()
         }
     }
 
