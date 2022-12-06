@@ -82,6 +82,7 @@ fun Snippet(product: ProductModel) {
                 start.linkTo(anchor = verticalGuideLine)
                 end.linkTo(anchor = parent.end, margin = 8.dp)
                 width = Dimension.fillToConstraints
+                height = Dimension.preferredWrapContent
             })
     }
 }

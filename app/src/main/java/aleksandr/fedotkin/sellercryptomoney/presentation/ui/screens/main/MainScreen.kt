@@ -3,6 +3,13 @@ package aleksandr.fedotkin.sellercryptomoney.presentation.ui.screens.main
 import aleksandr.fedotkin.sellercryptomoney.presentation.ui.navigation.Navigation
 import aleksandr.fedotkin.sellercryptomoney.presentation.ui.navigation.Screen
 import aleksandr.fedotkin.sellercryptomoney.presentation.viewmodels.MainViewModel
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
+import android.util.Log
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
@@ -15,15 +22,19 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
 import androidx.navigation.compose.rememberNavController
 import org.koin.androidx.compose.koinViewModel
 
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
@@ -33,6 +44,8 @@ fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
     val navController = rememberNavController()
 
     val (state, onStateChanged) = remember { mutableStateOf(value = true) }
+
+    Permission()
 
     Scaffold(modifier = Modifier.fillMaxSize(),
         bottomBar = {
@@ -63,5 +76,34 @@ fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
             sellerId = sellerId,
             navController = navController
         )
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+@Composable
+private fun Permission() {
+
+    val launcher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            Log.d("LOG_TAG","PERMISSION GRANTED")
+        } else {
+            Log.d("LOG_TAG","PERMISSION DENIED")
+        }
+    }
+
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = true) {
+        when (PackageManager.PERMISSION_GRANTED) {
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) -> {
+                Log.d("ExampleScreen","Code requires permission")
+            }
+            else -> launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
     }
 }

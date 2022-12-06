@@ -64,6 +64,8 @@ dependencies {
     implementation(Dependencies.Ktor.json)
     implementation(Dependencies.Ktor.logging)
 
+    implementation(Dependencies.OneSignal.oneSignal)
+
     implementation(Dependencies.Coil.landscapist)
 
     implementation(Dependencies.Koin.koin)
