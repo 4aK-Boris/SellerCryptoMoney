@@ -1,7 +1,7 @@
 package aleksandr.fedotkin.sellercryptomoney.core
 
 import aleksandr.fedotkin.sellercryptomoney.presentation.ui.screens.main.MainScreen
-import aleksandr.fedotkin.sellercryptomoney.presentation.viewmodels.MainViewModel
+import aleksandr.fedotkin.sellercryptomoney.presentation.ui.viewmodels.MainViewModel
 import android.os.Build
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi

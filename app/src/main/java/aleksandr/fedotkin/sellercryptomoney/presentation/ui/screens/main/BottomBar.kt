@@ -1,8 +1,7 @@
 package aleksandr.fedotkin.sellercryptomoney.presentation.ui.screens.main
 
 import aleksandr.fedotkin.sellercryptomoney.domain.models.SellerModel
-import aleksandr.fedotkin.sellercryptomoney.presentation.viewmodels.MainViewModel
-import aleksandr.fedotkin.sellercryptomoney.presentation.viewmodels.ProductViewModel
+import aleksandr.fedotkin.sellercryptomoney.presentation.ui.viewmodels.MainViewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

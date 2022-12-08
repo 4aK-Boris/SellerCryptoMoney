@@ -1,4 +1,4 @@
-package aleksandr.fedotkin.sellercryptomoney.presentation.viewmodels
+package aleksandr.fedotkin.sellercryptomoney.presentation.ui.viewmodels
 
 import aleksandr.fedotkin.sellercryptomoney.core.BaseViewModel
 import aleksandr.fedotkin.sellercryptomoney.core.runOnIO

@@ -2,7 +2,7 @@ package aleksandr.fedotkin.sellercryptomoney.presentation.ui.screens.main
 
 import aleksandr.fedotkin.sellercryptomoney.presentation.ui.navigation.Navigation
 import aleksandr.fedotkin.sellercryptomoney.presentation.ui.navigation.Screen
-import aleksandr.fedotkin.sellercryptomoney.presentation.viewmodels.MainViewModel
+import aleksandr.fedotkin.sellercryptomoney.presentation.ui.viewmodels.MainViewModel
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build

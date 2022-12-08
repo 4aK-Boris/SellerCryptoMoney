@@ -1,6 +1,6 @@
 package aleksandr.fedotkin.sellercryptomoney.presentation.ui.screens.products
 
-import aleksandr.fedotkin.sellercryptomoney.presentation.viewmodels.ProductViewModel
+import aleksandr.fedotkin.sellercryptomoney.presentation.ui.viewmodels.ProductViewModel
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth

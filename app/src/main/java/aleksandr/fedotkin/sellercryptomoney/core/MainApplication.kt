@@ -24,6 +24,6 @@ class MainApplication: Application() {
     }
 
     companion object {
-        private const val ONESIGNAL_APP_ID = "df506608-20fc-460e-8e77-d296037b1a7a"
+        private const val ONESIGNAL_APP_ID = "0fc70cea-7c25-463e-8118-f813cd7af0f4"
     }
 }
