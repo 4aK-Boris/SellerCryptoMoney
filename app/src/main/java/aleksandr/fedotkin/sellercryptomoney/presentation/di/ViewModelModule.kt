@@ -9,14 +9,14 @@ import org.koin.dsl.module
 val viewModelModule = module {
 
     viewModel() {
-        MainViewModel(sellerUseCase = get())
+        MainViewModel(sellerUseCase = get(), errorHandler = get())
     }
 
     viewModel() {
-        ProductViewModel(productUseCase = get())
+        ProductViewModel(productUseCase = get(), errorHandler = get())
     }
 
     viewModel {
-        PurchaseViewModel(purchaseUseCase = get())
+        PurchaseViewModel(purchaseUseCase = get(), errorHandler = get())
     }
 }

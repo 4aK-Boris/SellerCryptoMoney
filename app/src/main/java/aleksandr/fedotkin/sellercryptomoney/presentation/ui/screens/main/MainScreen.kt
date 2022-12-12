@@ -1,5 +1,6 @@
 package aleksandr.fedotkin.sellercryptomoney.presentation.ui.screens.main
 
+import aleksandr.fedotkin.sellercryptomoney.R
 import aleksandr.fedotkin.sellercryptomoney.presentation.ui.navigation.Navigation
 import aleksandr.fedotkin.sellercryptomoney.presentation.ui.navigation.Screen
 import aleksandr.fedotkin.sellercryptomoney.presentation.ui.viewmodels.MainViewModel
@@ -11,10 +12,10 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Home
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
@@ -30,6 +31,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.navigation.compose.rememberNavController
 import org.koin.androidx.compose.koinViewModel
@@ -53,20 +56,28 @@ fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
         }, floatingActionButtonPosition = FabPosition.End,
         floatingActionButton = {
             Crossfade(targetState = state) {
-                IconButton(onClick = {
-                    if (it) {
-                        navController.navigate(route = Screen.Purchases.route)
-                    } else {
-                        navController.navigate(route = Screen.Products.route)
-                    }
-                    onStateChanged(!state)
-                }, colors = IconButtonDefaults.iconButtonColors(
-                    containerColor = Color.Gray,
-                    contentColor = Color.White
-                )) {
+                IconButton(
+                    modifier = Modifier.border(
+                        width = 1.dp,
+                        color = Color.LightGray,
+                        shape = CircleShape
+                    ),
+                    onClick = {
+                        if (it) {
+                            navController.navigate(route = Screen.Purchases.route)
+                        } else {
+                            navController.navigate(route = Screen.Products.route)
+                        }
+                        onStateChanged(!state)
+                    }, colors = IconButtonDefaults.iconButtonColors(
+                        containerColor = Color.White,
+                        contentColor = Color.Black
+                    )
+                ) {
                     Icon(
-                        imageVector = if (it) Icons.Default.Home else Icons.Default.Add,
+                        painter = painterResource(id = if (it) R.drawable.product else R.drawable.purchase),
                         contentDescription = "Переключатель",
+                        modifier = Modifier.size(24.dp)
                     )
                 }
             }
@@ -87,9 +98,9 @@ private fun Permission() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
         if (isGranted) {
-            Log.d("LOG_TAG","PERMISSION GRANTED")
+            Log.d("LOG_TAG", "PERMISSION GRANTED")
         } else {
-            Log.d("LOG_TAG","PERMISSION DENIED")
+            Log.d("LOG_TAG", "PERMISSION DENIED")
         }
     }
 
@@ -101,7 +112,7 @@ private fun Permission() {
                 context,
                 Manifest.permission.POST_NOTIFICATIONS
             ) -> {
-                Log.d("ExampleScreen","Code requires permission")
+                Log.d("ExampleScreen", "Code requires permission")
             }
             else -> launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }

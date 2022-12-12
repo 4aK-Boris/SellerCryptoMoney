@@ -36,7 +36,6 @@ fun Purchase(purchaseModel: PurchaseModel) {
             modifier = Modifier.constrainAs(ref = buyer) {
                 top.linkTo(anchor = title.bottom, margin = 8.dp)
                 start.linkTo(anchor = parent.start, margin = 32.dp)
-                end.linkTo(anchor = parent.end, margin = 32.dp)
                 width = Dimension.preferredWrapContent
             })
 
@@ -45,6 +44,7 @@ fun Purchase(purchaseModel: PurchaseModel) {
             count = purchaseModel.count,
             modifier = Modifier.constrainAs(ref = price) {
                 top.linkTo(anchor = buyer.bottom, margin = 8.dp)
+                bottom.linkTo(anchor = parent.bottom, margin = 8.dp)
                 end.linkTo(anchor = parent.end, margin = 32.dp)
                 width = Dimension.preferredWrapContent
             })
@@ -57,7 +57,7 @@ private fun TitleText(text: String, modifier: Modifier) {
         text = text,
         textAlign = TextAlign.Start,
         fontFamily = FontFamily.Serif,
-        fontSize = 16.sp,
+        fontSize = 18.sp,
         fontWeight = FontWeight.W600,
         modifier = modifier
     )
@@ -66,11 +66,12 @@ private fun TitleText(text: String, modifier: Modifier) {
 @Composable
 private fun BuyerNickNameText(text: String, modifier: Modifier) {
     Text(
-        text = text,
+        text = "Покупатель: $text",
         textAlign = TextAlign.Start,
         fontFamily = FontFamily.Serif,
         fontSize = 16.sp,
         fontWeight = FontWeight.W600,
+        color = Color.Gray,
         modifier = modifier
     )
 }

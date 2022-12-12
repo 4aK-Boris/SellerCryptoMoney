@@ -38,9 +38,9 @@ object Dependencies {
 
     object Ktor {
 
-        private const val version = "2.1.3"
+        private const val version = "2.2.1"
 
-        const val client = "io.ktor:ktor-client-android:$version"
+        const val client = "io.ktor:ktor-client-okhttp:$version"
         const val negotiation = "io.ktor:ktor-client-content-negotiation:$version"
         const val json = "io.ktor:ktor-serialization-kotlinx-json:$version"
         const val logging = "io.ktor:ktor-client-logging:$version"

@@ -109,7 +109,7 @@ private fun Seller(seller: SellerModel) {
 
     Row(
         modifier = Modifier.width(width = width),
-        horizontalArrangement = Arrangement.SpaceAround,
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
 
@@ -117,7 +117,7 @@ private fun Seller(seller: SellerModel) {
             imageModel = { seller.imageUrl },
             modifier = Modifier
                 .height(height = 32.dp)
-                .padding(start = 32.dp)
+                .padding(start = 16.dp)
                 .clip(shape = RoundedCornerShape(size = 4.dp)),
             loading = {
                 CircularProgressIndicator(color = Color.Black, strokeWidth = 2.dp)
@@ -130,7 +130,7 @@ private fun Seller(seller: SellerModel) {
 
         AmountText(
             amount = seller.amountOfMoney,
-            modifier = Modifier.padding(start = 16.dp, end = 32.dp)
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
     }
 }

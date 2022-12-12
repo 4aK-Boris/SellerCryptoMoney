@@ -25,7 +25,7 @@ class KtorClient(private val client: HttpClient) {
         response.body()
     } catch (ex: UnresolvedAddressException) {
         throw NoInternet()
-    } catch (e: Exception) {
+    } catch (e: UnknownNetworkException) {
         throw NoInternet()
     }
 

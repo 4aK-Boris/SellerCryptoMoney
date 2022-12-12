@@ -23,7 +23,7 @@ import org.koin.androidx.compose.koinViewModel
 fun Snippets(
     viewModel: ProductViewModel = koinViewModel(),
     paddingValues: PaddingValues,
-    sellerId: Int
+    sellerId: Int,
 ) {
 
     val state = rememberLazyListState()
